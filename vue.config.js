@@ -3,8 +3,9 @@ module.exports = {
   /** 区分打包环境与开发环境
    * process.env.NODE_ENV==='production'  (打包环境)
    * process.env.NODE_ENV==='development' (开发环境)
-   * baseUrl: process.env.NODE_ENV==='production'?"https://xxx":'',
+   * 
    */
+  // baseUrl: process.env.NODE_ENV==='production'? "http://8.210.134.217:8201":'http://8.210.134.217:8201',
   // 项目部署的基础路径
   // 我们默认假设你的应用将会部署在域名的根部,
   // 例如 https://www.my-app.com/

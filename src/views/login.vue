@@ -22,21 +22,15 @@
 </template>
 
 <script>
-import { ref, reactive } from "@vue/composition-api";
+import { ref, reactive, onMounted } from "@vue/composition-api";
+import Api from '@/api/index'
+import quest from '../request/request'
+
 export default {
     // data() {},
     setup(props,{refs}) {
-         let data = reactive({
-            ruleForm: {
-                account: "111",
-                password: ""
-            },
-            rules: {
-                account: [{ validator: validateAccount, trigger: "blur" }],
-                password: [{ validator: validatePassword, trigger: "blur" }]
-            }
-        });
-        let validateAccount = (rule, value, callback) => {
+         let validateAccount = (rule, value, callback) => {
+            console.log(rule)
             if (value === "") {
                 callback(new Error("请输入账号 "));
             } else {
@@ -49,15 +43,24 @@ export default {
         let validatePassword = (rule, value, callback) => {
             if (value === "") {
                 callback(new Error("请输入密码"));
-            } else if (!data.ruleForm.account) {
+            } else if (!data.ruleForm.password) {
                 callback(new Error("请输入密码"));
             } else {
                 callback();
             }
         };
+         let data = reactive({
+           ruleForm:{
+                account: "",
+                password: "",
+           },
+            rules: {
+                account: [{ validator: validateAccount, trigger: "blur" }],
+                password: [{ validator: validatePassword, trigger: "blur" }]
+            }
+        });
 
         const submitForm = ( (formName)=>{
-            console.log(formName)
             refs[formName].validate(valid => {
                 if (valid) {
                     alert("submit!");
@@ -67,16 +70,21 @@ export default {
             });
         })
 
+        onMounted(()=>{
+            console.log(Api)
+            aa()
+        })
+
+         const aa =  (async () =>{
+           let data = await quest(Api.login.login)
+           console.log(data)
+        })
         return {
+            submitForm,
             data,
-            submitForm
+            aa,
         };
     },
-    methods:{
-        aa() {
-            
-        }
-    }
    
 };
 </script>
@@ -99,7 +107,7 @@ export default {
         margin-bottom: 10px;
     }
     .login-btn {
-        margin-top: 20px;
+        margin-top: 100px;
     }
 }
 </style>
