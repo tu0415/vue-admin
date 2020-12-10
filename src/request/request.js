@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import { Message  } from 'element-ui';
 
 // 创建axios实例
 const service = axios.create({
@@ -24,27 +24,29 @@ service.interceptors.request.use(function (config) {
 // 添加响应拦截器
 service.interceptors.response.use(function (response) {
     // 对响应数据做点什么
-    return response;
+    return Promise.resolve(response);
 }, function (error) {
     // 对响应错误做点什么
     return Promise.reject(error);
 });
 
 
-const quest = (url, data,method) => {
+const quest = (url,method,data) => {
     return new Promise((resolve, reject) => {
         service.request({
             method:method || 'get',
             url,
             data:data || '',
         }).then(res=>{
-            if(res.code == 200) {
+            console.log(res)
+            if(res.data.code == 200) {
                 resolve(res.data)
             } else {
+                Message.error(res.data.message) 
                 reject(res.data)
             }
         }).catch(err=>{
-           
+            Message.error('服务器错误,请稍后再试')
         })   
    })
 }

@@ -24,7 +24,7 @@
 <script>
 import { ref, reactive, onMounted } from "@vue/composition-api";
 import Api from '@/api/index'
-import quest from '../request/request'
+import quest from '@/request/request'
 
 export default {
     // data() {},
@@ -71,12 +71,11 @@ export default {
         })
 
         onMounted(()=>{
-            console.log(Api)
             aa()
         })
 
          const aa =  (async () =>{
-           let data = await quest(Api.login.login)
+           let data = await quest(Api.login.login,'post')
            console.log(data)
         })
         return {
@@ -107,7 +106,7 @@ export default {
         margin-bottom: 10px;
     }
     .login-btn {
-        margin-top: 100px;
+        margin-top: 2rem;
     }
 }
 </style>

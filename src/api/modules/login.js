@@ -1,5 +1,5 @@
 const login = {
-	login: '/goods/findGoodsArea', // 登录
+	login: '/login.do', // 登录
 }
 
 export default login
