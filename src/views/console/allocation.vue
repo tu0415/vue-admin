@@ -1,13 +1,10 @@
 <template>
     <div class="index">
-       商城首页
+       配置管理
     </div>
 </template>
 
 <script>
-// import leftNav from "@/components/leftNav";
-// import heardNav from "@/components/heardNav";
-// import mainCount from "@/components/mainCount";
 import { ref, reactive, onMounted } from "@vue/composition-api";
 import Api from '@/api/index'
 import quest from '@/request/request'

@@ -1,10 +1,10 @@
 <template>
     <div class="leftNav">
-        <el-menu default-active="1-4-1" background-color="#344a5f" text-color="#fff" active-text-color="#fff" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="data.isCollapse">
+        <el-menu default-active="1-4-1" background-color="transparent" text-color="#fff" active-text-color="#fff" class="el-menu-vertical-demo" router unique-opened @open="handleOpen" @close="handleClose" :collapse="data.isCollapse">
             <template v-for="(item,i) in data.routes">
                 <el-submenu v-if="!item.hidden" :key="i" :index="i + ''">
                     <template slot="title">
-                        <i class="el-icon-location"></i>
+                        <i :class="item.meta.icon"></i>
                         <span slot="title">{{item.meta.name}}</span>
                     </template>
 
@@ -40,7 +40,7 @@ export default {
         const handleClose = (() => {
 
         })
-
+       
         onMounted(() => {
             // aa()
         })
@@ -58,6 +58,7 @@ export default {
 
 };
 </script>
+
 
 <style lang="scss" scoped>
 .leftNav {
