@@ -1,7 +1,7 @@
 <template>
     <div class="heardNav">
         <div class=" heard">
-            <i class="el-icon-menu icon  f28 "></i>
+            <i @click="navMenuStaus" class="el-icon-menu icon  f28 "></i>
             <div class="heard-right">
                 <div class="user-info ">
                     <img src="../assets/images/user.jpg" alt="">
@@ -21,40 +21,29 @@ import quest from '@/request/request'
 export default {
     name: 'leftNav',
     // data() {},
-    setup(props, { refs }) {
-
-        let data = reactive({
-
-        });
-
-        onMounted(() => {
-            // aa()
-        })
-
-        const aa = (async () => {
-            let data = await quest(Api.login.login)
-            console.log(data)
+    setup(props, { root }) {
+        const navMenuStaus = (()=>{
+            root.$store.commit('SET_ISCOLLAPSE')
         })
         return {
-
+            navMenuStaus
         };
     },
 };
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/scss/config.scss";
 .heardNav {
     position: fixed;
     left: 250px;
+    z-index: 1;
     top: 0;
     right: 0;
     height: 100px;
     background-color: #fff;
-    -webkit-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.1);
-    -ms-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.1);
-    -o-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.1);
+     @include webkit( transition,all .3s ease 0s);
+     @include webkit( box-shadow,0 3px 16px 0 rgba(0, 0, 0, 0.1));
     .heard {
         padding: 0 32px;
         height: 100%;
@@ -82,5 +71,17 @@ export default {
         }
     }
 }
+
+.open {
+    .heardNav {
+        left: 250px;
+    }
+}
+.close {
+    .heardNav {
+        left: 64px;
+    }
+}
+
 </style>
 

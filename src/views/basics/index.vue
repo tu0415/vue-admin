@@ -1,5 +1,5 @@
 <template>
-    <div class="index">
+    <div id="index" :class="[menuStatus ? 'close':'open']">
        <leftNav></leftNav>
        <heardNav></heardNav>
        <mainCount></mainCount>
@@ -10,29 +10,15 @@
 import leftNav from "@/components/leftNav";
 import heardNav from "@/components/heardNav";
 import mainCount from "@/components/mainCount";
-import { ref, reactive, onMounted } from "@vue/composition-api";
-import Api from '@/api/index'
-import quest from '@/request/request'
+import { computed } from "@vue/composition-api";
 
 export default {
     name:'index',
     components:{leftNav,heardNav,mainCount},
-    setup(props,{refs}) {
-         
-         let data = reactive({
-           
-        });
-
-        onMounted(()=>{
-            // aa()
-        })
-
-         const aa =  (async () =>{
-           let data = await quest(Api.login.login)
-           console.log(data)
-        })
+    setup(props,{root}) {
+         let menuStatus = computed(()=> root.$store.state.isCollapse)
         return {
-            
+            menuStatus
         };
     },
    

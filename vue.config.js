@@ -15,7 +15,7 @@ module.exports = {
   // 那么将这个值改为 '/my-app/'
 
   //baseUrl: '/',//vue-cli3.3以下版本使用
-  publicPath: "/", //vue-cli3.3+新版本使用
+  publicPath: "./", //vue-cli3.3+新版本使用
 
   // 构建好的文件输出到哪里
   outputDir: "dist",
