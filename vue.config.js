@@ -136,15 +136,17 @@ module.exports = {
     https: false, // true 配置之后可使用生成 https://localhost:8080/
     hotOnly: false, // 热更新（webpack已实现了，这里false即可）
     // proxy: null // 设置代理
-    proxy: "http://localhost:8080" // 配置跨域处理,只设一个代理
-    //   proxy: { //多个
-    //     // 配置跨域处理 可以设置多个
-    //     '/api': {
-    //       target: 'https://www.baidu.com/api',
-    //       ws: true,
-    //       changeOrigin: true
-    //     }
-    //   }
+    // proxy: "http://localhost:8080" // 配置跨域处理,只设一个代理
+      proxy: { //多个
+        // 配置跨域处理 可以设置多个
+        '/api': {
+          target: 'http://ttl.cucy.top',
+          changeOrigin: true,
+          pathRewrite:{
+            '^/api':''
+          }
+        }
+      }
     // before: app => {}
   },
 

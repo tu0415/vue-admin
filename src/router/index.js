@@ -4,6 +4,8 @@ Vue.use(VueRouter);
 
 import basics from '@/views/basics'
 
+
+
 const routes = [
     {
         path: "/",
@@ -196,7 +198,13 @@ const routes = [
 ];
 
 const router = new VueRouter({
-    routes
+    routes,
+   
 });
+
+
+
+
+
 
 export default router;

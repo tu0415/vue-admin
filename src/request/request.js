@@ -1,9 +1,13 @@
 import axios from 'axios'
 import { Message  } from 'element-ui';
-
+import qs from 'qs';
 // 创建axios实例
+
+const  BASEURL = process.env.NODE_ENV == 'production' ? '' :'/api'   
+
 const service = axios.create({
-    baseURL: 'http://8.210.134.217:8201',  //测试环境
+    baseURL: `http://ttl.cucy.top`,  //测试环境
+    // baseURL: BASEURL,  //测试环境
     headers:{
         'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'
         // "Content-Type": "application/json; charset=UTF-8"
@@ -32,11 +36,13 @@ service.interceptors.response.use(function (response) {
 
 
 const quest = (url,method,data) => {
+   console.log(data)
     return new Promise((resolve, reject) => {
+        console.log(data)
         service.request({
             method:method || 'get',
             url,
-            data:data || '',
+            params:data ||  {},
         }).then(res=>{
             console.log(res)
             if(res.data.code == 200) {

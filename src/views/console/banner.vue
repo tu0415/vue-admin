@@ -19,15 +19,19 @@ export default {
         });
 
         onMounted(()=>{
-            // aa()
+            getDataEvt()
         })
 
-         const aa =  (async () =>{
-           let data = await quest(Api.login.login)
-           console.log(data)
+          const getDataEvt = (async () => {
+            let parament = {
+                page: 2,
+                limit: 10
+            }
+            const data = await quest(Api.user.userListAjax,'get',{page:1})
+            console.log(data)
         })
         return {
-            
+            getDataEvt,
         };
     },
    
