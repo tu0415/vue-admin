@@ -4,8 +4,6 @@ Vue.use(VueRouter);
 
 import basics from '@/views/basics'
 
-
-
 const routes = [
     {
         path: "/",
@@ -35,7 +33,7 @@ const routes = [
         component:basics,
         children: [
             {
-                path: "/index",
+                path: "/console/index",
                 name: "index",
                 component: () => import("@/views/console/allocation.vue"),
                 meta: {
@@ -43,7 +41,7 @@ const routes = [
                 },
             },
             {
-                path: "/banner",
+                path: "/console/banner",
                 name: "banner",
                 component: () => import("@/views/console/banner.vue"),
                 meta: {
@@ -63,7 +61,7 @@ const routes = [
         component:basics,
         children: [
             {
-                path: "/goodsIndex",
+                path: "/goods/goodsIndex",
                 name: "goodsIndex",
                 component: () => import("@/views/goods/goods.vue"),
                 meta: {
@@ -71,7 +69,7 @@ const routes = [
                 },
             },
             {
-                path: "/prefecture",
+                path: "/goods/prefecture",
                 name: "prefecture",
                 component: () => import("@/views/goods/prefecture.vue"),
                 meta: {
@@ -79,7 +77,7 @@ const routes = [
                 },
             },
             {
-                path: "/classify",
+                path: "/goods/classify",
                 name: "classify",
                 component: () => import("@/views/goods/classify.vue"),
                 meta: {
@@ -100,7 +98,7 @@ const routes = [
         component:basics,
         children: [
             {
-                path: "/orderIndex",
+                path: "/order/orderIndex",
                 name: "orderIndex",
                 component: () => import("@/views/order/index.vue"),
                 meta: {
@@ -108,7 +106,7 @@ const routes = [
                 },
             },
             {
-                path: "/orderDetail",
+                path: "/order/orderDetail",
                 name: "orderDetail",
                 component: () => import("@/views/order/orderDetail.vue"),
                 meta: {
@@ -116,7 +114,7 @@ const routes = [
                 },
             },
             {
-                path: "/orderOperation",
+                path: "/order/orderOperation",
                 name: "orderOperation",
                 component: () => import("@/views/order/orderOperation.vue"),
                 meta: {

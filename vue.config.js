@@ -4,6 +4,7 @@ module.exports = {
    * process.env.NODE_ENV==='production'  (打包环境)
    * process.env.NODE_ENV==='development' (开发环境)
    * 
+   * const url = process.env.NODE_ENV==='production'? "http://8.210.134.217:8201":'http://8.210.134.217:8201'
    */
   // baseUrl: process.env.NODE_ENV==='production'? "http://8.210.134.217:8201":'http://8.210.134.217:8201',
   // 项目部署的基础路径

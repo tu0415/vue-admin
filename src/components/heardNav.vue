@@ -14,9 +14,10 @@
 </template>
 
 <script>
-import { ref, reactive, onMounted } from "@vue/composition-api";
+import { ref, reactive, onMounted, computed } from "@vue/composition-api";
 import Api from '@/api/index'
 import quest from '@/request/request'
+import { mapState, mapMutations } from "vuex";
 
 export default {
     name: 'leftNav',
@@ -24,7 +25,11 @@ export default {
     setup(props, { root }) {
         const navMenuStaus = (()=>{
             root.$store.commit('SET_ISCOLLAPSE')
+            
         })
+
+       
+        
         return {
             navMenuStaus
         };

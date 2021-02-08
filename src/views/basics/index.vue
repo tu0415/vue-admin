@@ -16,7 +16,7 @@ export default {
     name:'index',
     components:{leftNav,heardNav,mainCount},
     setup(props,{root}) {
-         let menuStatus = computed(()=> root.$store.state.isCollapse)
+        let menuStatus = computed(()=> root.$store.state.isCollapse)
         return {
             menuStatus
         };
